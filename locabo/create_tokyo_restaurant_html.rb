@@ -14,16 +14,16 @@ outfile.puts(File.read("./header.txt"))
 regions = []
 # 想定する headers は ["営業状況", "店名", "ジャンル", "最寄り駅", "地域", "コメント", "URL"]
 CSV.foreach("./locabo.csv", headers: true) do |f|
-  unless regions.include?(f[4])
-    regions << f[4]
-    region = "&nbsp;<h2>#{f[4]}</h2>"
+  unless regions.include?(f["地域"])
+    regions << f["地域"]
+    region = "&nbsp;<h2>#{f["地域"]}</h2>"
   end
 
-  need_delete = f[0] == "x"
-  title = "<a href=\"#{f[6]}\">#{f[1]}</a>(#{f[2]})"
+  need_delete = f["営業状況"] == "x"
+  title = "<a href=\"#{f["URL"]}\">#{f["店名"]}</a>(#{f["ジャンル"]})"
   title = "<del>#{title}</del>" if need_delete
 
-  comments = build_comments(f[5])
+  comments = build_comments(f["コメント"])
 
   outfile.puts(region) if region
   outfile.puts(title)
