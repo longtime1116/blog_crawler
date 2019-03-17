@@ -8,14 +8,14 @@ def build_comments(comments_str)
   "<ul>#{li}</ul>"
 end
 
-outfile = File.open("./locabo_tokyo_restaurant.html", "w")
-outfile.puts(File.read("./txt/tokyo_header.txt"))
+outfile = File.open("./output/locabo_tokyo_restaurant.html", "w")
+outfile.puts(File.read("./input/txt/tokyo_header.txt"))
 
 regions = []
 # csv parse
 # 想定する headers は ["営業状況", "店名", "ジャンル", "最寄り駅", "地域", "コメント", "URL"]
 region_restaurants_hash = {}
-CSV.foreach("./locabo.csv", headers: true) do |f|
+CSV.foreach("./input/locabo.csv", headers: true) do |f|
   next if f["地域"].nil?
   unless region_restaurants_hash.keys.include?(f["地域"])
     region_restaurants_hash[f["地域"]] = []

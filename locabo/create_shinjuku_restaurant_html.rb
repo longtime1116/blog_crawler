@@ -9,12 +9,12 @@ def build_comments(comments_str)
   "<ul>#{li}</ul>"
 end
 
-outfile = File.open("./locabo_shinjuku_restaurant.html", "w")
-outfile.puts(File.read("./txt/shinjuku_header.txt"))
+outfile = File.open("./output/locabo_shinjuku_restaurant.html", "w")
+outfile.puts(File.read("./input/txt/shinjuku_header.txt"))
 
 # csv parse
 station_restaurants_hash = {}
-CSV.foreach("./locabo.csv", headers: true) do |f|
+CSV.foreach("./input/locabo.csv", headers: true) do |f|
   next if f["最寄り駅"].nil?
   unless station_restaurants_hash.keys.include?(f["最寄り駅"])
     station_restaurants_hash[f["最寄り駅"]] = []
