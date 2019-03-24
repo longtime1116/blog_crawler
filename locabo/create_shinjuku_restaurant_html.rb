@@ -25,4 +25,5 @@ station_restaurants_hash.each do |station, restaurants|
     outfile.puts(comments)
   end
 end
+outfile.puts(File.read("./input/txt/shinjuku_footer.txt"))
 outfile.close

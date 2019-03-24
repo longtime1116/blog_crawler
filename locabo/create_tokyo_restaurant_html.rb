@@ -23,4 +23,5 @@ region_restaurants_hash.each do |region, restaurants|
     outfile.puts(comments)
   end
 end
+outfile.puts(File.read("./input/txt/tokyo_footer.txt"))
 outfile.close
